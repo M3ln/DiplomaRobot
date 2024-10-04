@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <gazebo>
+    <plugin name="gazebo_ros_imu_controller" filename="libgazebo_ros_imu.so">
+      <!-- <robotNamespace></robotNamespace> -->
+      <topicName>imu/data</topicName>
+      <serviceName>imu/service</serviceName>
+      <bodyName>base_link</bodyName>
+      <gaussianNoise>0</gaussianNoise>
+      <rpyOffsets>0 0 0</rpyOffsets>
+      <updateRate>30.0</updateRate>
+      <alwaysOn>true</alwaysOn>
+      <gaussianNoise>0</gaussianNoise>
+    </plugin>
+  </gazebo>
+  
+  <gazebo>
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+    <legacyMode>false</legacyMode>
+    <alwaysOn>true</alwaysOn>
+    <publishWheelTF>true</publishWheelTF>
+    <publishTf>1</publishTf>
+    <publishWheelJointState>true</publishWheelJointState>
+    <updateRate>100.0</updateRate>
+    <leftJoint>Right_wheel_joint</leftJoint>
+    <rightJoint>Left_wheel_joint</rightJoint>
+    <wheelSeparation>0.696</wheelSeparation>
+    <wheelDiameter>0.15</wheelDiameter>
+    <wheelAcceleration>1.0</wheelAcceleration>
+    <torque>10</torque>
+    <commandTopic>/part2_cmr/cmd_vel</commandTopic>
+    <odometryTopic>odom</odometryTopic>
+    <odometryFrame>odom</odometryFrame>
+    <robotBaseFrame>base_link</robotBaseFrame>
+  </plugin>
+</gazebo>
+</robot>

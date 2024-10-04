@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="diploma_self_balancing_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.000840538822720041 -0.000982144092169568 0.328077307417626"
+        rpy="0 0 0" />
+      <mass
+        value="8.26009896643781" />
+      <inertia
+        ixx="0.198393777025782"
+        ixy="-5.0051619743563E-06"
+        ixz="1.13741063752422E-05"
+        iyy="0.191965312857291"
+        iyz="1.7611642820209E-08"
+        izz="0.0212989887620935" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://diploma_self_balancing_robot/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://diploma_self_balancing_robot/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Right_wheel_link">
+    <inertial>
+      <origin
+        xyz="-4.0766001685455E-17 1.38777878078145E-17 0.0225073606820158"
+        rpy="0 0 0" />
+      <mass
+        value="0.925864448816862" />
+      <inertia
+        ixx="0.00447307522177537"
+        ixy="-6.08317786806298E-20"
+        ixz="4.52944143007837E-19"
+        iyy="0.00447307522177538"
+        iyz="-6.69778972027862E-21"
+        izz="0.00864463207205217" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://diploma_self_balancing_robot/meshes/Right_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.43921568627451 0.43921568627451 0.43921568627451 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://diploma_self_balancing_robot/meshes/Right_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Right_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.00066371 0.34699 0"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="Right_wheel_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Left_wheel_link">
+    <inertial>
+      <origin
+        xyz="-1.35221694952392E-15 -1.11022302462516E-16 -0.0225073606820156"
+        rpy="0 0 0" />
+      <mass
+        value="0.92586444881686" />
+      <inertia
+        ixx="0.00447307522177537"
+        ixy="3.99239018696739E-19"
+        ixz="3.89116557841663E-19"
+        iyy="0.00447307522177537"
+        iyz="6.7987391580319E-20"
+        izz="0.00864463207205215" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://diploma_self_balancing_robot/meshes/Left_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.43921568627451 0.43921568627451 0.43921568627451 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://diploma_self_balancing_robot/meshes/Left_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Left_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.00066371 -0.34791 0"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Left_wheel_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <xacro:include filename="$(find diploma)/urdf/sensors_pluguins.gazebo.xacro" />
+  <xacro:include filename="$(find diploma)/urdf/_d435.urdf.xacro" />
+  <xacro:sensor_d435 name="camera" parent="base_link">
+    <origin xyz="0.060125 0.0000020713 0.54862" rpy="0 0 0"/>
+  </xacro:sensor_d435>
+</robot>
